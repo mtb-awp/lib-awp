@@ -1,0 +1,14 @@
+.idea
+.project
+.svn
+*/.svn
+*/.idea
+framework/github/*
+framework/github
+
+base
+node_modules
+*/node_modules
+
+*/atc
+dist/*

@@ -1,0 +1,22 @@
+{
+  "name": "mixsln",
+  "version": "0.4.3",
+  "homepage": "http://gitlab.alibaba-inc.com/mtb/mixsln",
+  "author": {
+    "name": "zhuxun.jb@taobao.com"
+  },
+  "devDependencies": {
+    "grunt": "0.4.x",
+    "grunt-contrib-cssmin": "~0.6.1",
+    "grunt-contrib-uglify ": "~0.2.2",
+    "grunt-contrib-copy": "~0.4.1"
+  },
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "keywords": [
+    "webapp",
+    "mixsln"
+  ]
+}
