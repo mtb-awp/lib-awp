@@ -42,7 +42,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: '<%= distPath %>/',
-                        src: ['*.debug.js'],
+                        src: ['**/*.debug.js'],
                         dest: '<%= distPath %>/',
                         ext: '.js'
                     }
@@ -53,7 +53,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: '<%= distPath %>/plugins/',
-                        src: ['*.debug.js'],
+                        src: ['**/*.debug.js'],
                         dest: '<%= distPath %>/plugins/',
                         ext: '.js'
                     }
