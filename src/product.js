@@ -1,7 +1,7 @@
 (function (app) {
     app.config.resourceBase = 'http://a.tbcdn.cn/g/mtb/';
     app.config.enableMessageLog = false;
-    app.config.enableNavbar = window.location.href.indexOf("ipad") < 0;
+    app.config.enableNavbar = !window.lib.hybrid.detect.isClient();
     app.config.enableToolbar = !0;
     app.config.enableScroll = !1;
     app.config.enableTransition = !0;
