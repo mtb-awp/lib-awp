@@ -1,7 +1,7 @@
 (function (app) {
     app.config.resourceBase = 'http://a.tbcdn.cn/g/mtb/';
     app.config.enableMessageLog = false;
-    app.config.enableNavbar = !window.lib.hybrid.detect.isClient();
+    app.config.enableNavbar = true;
     app.config.enableToolbar = !0;
     app.config.enableScroll = !1;
     app.config.enableTransition = !0;
@@ -14,7 +14,7 @@
     backBtn = {
         type: 'back',
         text: '返回',
-        autoHide: false,
+        autoHide: location.href.indexOf("taobao_apad")>0,
         handler: function () {
             var href = window.location.href;
             app.navigation.pop();
