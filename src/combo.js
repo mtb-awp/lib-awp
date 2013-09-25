@@ -13,7 +13,11 @@
         var comboArr = [], result = [];
         function updateComboArr(){
             if(comboArr.length){
-                result.push(app.config.resourceBase + "??" + comboArr.join(','));
+				if(comboArr.length===1){
+					result.push(app.config.resourceBase + comboArr[0]);
+				}else{
+					result.push(app.config.resourceBase + "??" + comboArr.join(','));
+				}
             }
             comboArr = [];
         }
