@@ -14,7 +14,7 @@
     backBtn = {
         type: 'back',
         text: '返回',
-        autoHide: location.href.indexOf("taobao_apad")>0,
+        autoHide: window.lib.hybrid.detect.isClient()?true:false,
         handler: function () {
             var href = window.location.href;
             app.navigation.pop();
