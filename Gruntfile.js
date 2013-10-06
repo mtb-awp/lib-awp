@@ -59,6 +59,27 @@ module.exports = function (grunt) {
                     }
                 ]
             }
+        },
+
+        source_wrap: {
+            main:{
+                files: [{
+                    expand: true,
+                    cwd: '<%= distPath%>',
+                    src: ['**/*.js','!**/*__cached.js'],
+                    dest: '<%= distPath %>',
+                    ext: '__cached.js'
+                }]
+            },
+
+            test:{
+                files: [{
+                    expand: true,
+                    cwd: 'test/1.0',
+                    src: ['**/*.js','!**/*__cached.js'],
+                    ext: '__cached.js'
+                }]
+            }
         }
     });
 
@@ -66,8 +87,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-source-wrap');
 
     // Default grunt
-    grunt.registerTask('default', ['copy', 'cssmin', 'uglify']);
+    grunt.registerTask('default', ['copy', 'cssmin', 'uglify','source_wrap:main']);
+    grunt.registerTask('test', ['copy', 'cssmin', 'uglify','source_wrap:test']);
 
 };
