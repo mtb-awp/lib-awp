@@ -25,7 +25,7 @@
     function evalSource(source, url) {
         if (endsWith(url, ".js")) {
             eval(source);
-            console.log("eval js:" + source);
+//            console.log("eval js:" + source);
             return true;
         } else if (endsWith(url, ".css")) {
             appendCss(source);
@@ -36,6 +36,7 @@
 
     lib.awp = {
         read: function (url) {
+            console.log(url);
             var source = localStorage.getItem(url);
             try {
                 if (source) {

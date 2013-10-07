@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <link rel="apple-touch-icon" href="favicon.png"/>
+    <link rel="Shortcut Icon" href="favicon.png" type="image/x-icon"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+    <title>淘宝网</title>
+    <script>
+        if (!location.hash) {
+            location.hash = "/awp/base/cart.htm";
+        }
+        window.addEventListener('pageshow', function (e) {
+            if (e.persisted) {
+                location.reload();
+            }
+        });
+        window.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                window.scroll(0, 0);
+                document.body.style.minHeight = window.innerHeight + 'px';
+            }, 1);
+        });
+        if ((/iphone|ipad/gi).test(navigator.appVersion)) {
+            document.styleSheets[0] && document.styleSheets[0].addRule('a:hover, button:hover', '-webkit-tap-highlight-color:rgba(0,0,0,0.7)!important;');
+        }
+    </script>
+    <link href="../build/comp/container_devel.css" rel="stylesheet" type="text/css"/>
+    <link href="../build/comp/component.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<div class="viewport">
+    <header class="navbar"></header>
+    <section class="content"></section>
+    <footer class="toolbar"></footer>
+</div>
+
+<script type="text/javascript"
+        src="http://a.tbcdn.cn/g/mtb/??zepto/1.0.2/zepto.js,mixsln/0.4.3/mixsln.js,mixsln/0.4.3/plugins/domevent.js,mixsln/0.4.3/plugins/lazyload.js,mixsln/0.4.3/plugins/loading.js,mixsln/0.4.3/plugins/pullbounce.js,mixsln/0.4.3/plugins/scrollpos.js,mixsln/0.4.3/plugins/slideview.js,mixsln/0.4.3/plugins/stateStorage.js,lib-awp/0.1.1/plugins/old/pagenotify.js,lib-mtop/0.4.4/mtop_all.js"></script>
+
+<script src="../src/product.js"></script>
+<script src="../src/combo.js"></script>
+<script src="../src/namespace.js"></script>
+
+<script>
+
+app.definePageMeta({"name": "awp-base-cart-htm", "title": "购物车", "route": "!\\/awp\\/base\\/cart\\.htm", "js": ["http://a.tbcdn.cn/g/mtb/lib-container/namespace.js", "http://a.tbcdn.cn/g/mtb/lib-container/component.js", "http://a.tbcdn.cn/g/mtb/lib-cart/0.0.1/cartDb.js", "app-cart/0.0.10/cart.js", "http://a.tbcdn.cn/g/mtb/app-cart/0.0.10/page.js"], "css": ["http://a.tbcdn.cn/g/mtb/lib-container/h5component.css", "app-cart/0.0.10/cart.css"]});
+app.definePageMeta({"name": "awp-core-buy-htm", "title": "确认下单", "route": "!\\/awp\\/core\\/buy.htm", "js": ["http://a.tbcdn.cn/g/mw/plugins/libs/mustache_0.7.2.js", "http://a.tbcdn.cn/g/mtb/lib-container/namespace.js", "http://a.tbcdn.cn/g/mtb/lib-container/component.js", "app-order/order.js", "http://a.tbcdn.cn/g/mtb/app-order/page.js"], "css": ["http://a.tbcdn.cn/g/mtb/lib-container/h5component.css", "app-order/order.css"]});
+app.definePageMeta({"name": "item_detail", "title": "商品详情", "route": "!\\/awp\\/core\\/detail.htm", "js": ["http://a.tbcdn.cn/g/mtb/lib-container/namespace.js", "http://a.tbcdn.cn/g/mtb/lib-container/component.js", "http://a.tbcdn.cn/g/mtb/lib-cart/0.0.2/cartDb.js", "http://a.tbcdn.cn/g/mtb/lib-cart/0.0.2/addCart.js", "app-item/common.js", "/../app-item/build/detail.js", "/../app-item/page_item.js"], "css": ["http://a.tbcdn.cn/g/mtb/lib-container/h5component.css", "app-item/item.css"]});
+app.definePageMeta({"name": "item_desc", "title": "图文描述", "route": "!\\/awp\\/core\\/desc.htm", "js": ["http://a.tbcdn.cn/g/mtb/lib-container/namespace.js", "http://a.tbcdn.cn/g/mtb/lib-container/component.js", "app-item/common.js", "app-item/desc.js", "/../app-item/page_desc.js"], "css": ["http://a.tbcdn.cn/g/mtb/lib-container/h5component.css", "app-item/item.css"]});
+app.definePageMeta({"name": "item_rate", "title": "商品评论", "route": "!\\/awp\\/core\\/rate.htm", "js": ["http://a.tbcdn.cn/g/mtb/lib-container/namespace.js", "http://a.tbcdn.cn/g/mtb/lib-container/component.js", "app-item/common.js", "app-item/rate.js", "/../app-item/page_rate.js"], "css": ["http://a.tbcdn.cn/g/mtb/lib-container/h5component.css", "app-item/item.css"]});
+</script>
+
+</body>
+<script>
+    var ttid = window.lib.uri.getParam("ttid");
+    if (ttid) {
+        document.write('<scr' + 'ipt src="http://g.assets.daily.taobao.net/mtb/lib-windvane/1.1.2/??bridge.js,api.js,hooks.js"></scr' + 'ipt>');
+    }
+</script>
+<script>
+    app.start();
+</script>
+</html>
