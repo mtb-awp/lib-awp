@@ -24,13 +24,13 @@
             }
             var source = localStorage.getItem(url);
             if (source) {
-               if(evalSource(source, url)){
-                   return 1;
-               }
+                if (evalSource(source, url)) {
+                    return 1;
+                }
             } else {
                 //TODO
                 var fN = fileName(url);
-                if(config[fN]){
+                if (config[fN] && config[fN] != url) {
                     console.log("remove chache " + config[fN]);
                     localStorage.removeItem(config[fN]);
                 }
@@ -40,12 +40,12 @@
             return 0;
         },
 
-        cache: function (json) {
-            var fileName = json.name,
-                source = json.source;
+        cache: function (fileName, source) {
+//            var fileName = json.name,
+//                source = json.source;
             if (config[fileName]) {
                 console.log("add chache " + config[fileName]);
-                localStorage.setItem(config[fileName], source);
+                localStorage.setItem(config[fileName], strSource(source));
             }
             evalSource(source, fileName);
         }
@@ -60,6 +60,15 @@
         return arr[arr.length - 1].split("?")[0];
     }
 
+    function strSource(source) {
+        if (typeof source === "function") {
+            var entire = source.toString(),
+                body = entire.substring(entire.indexOf("{") + 1, entire.lastIndexOf("}"));
+            return body;
+        }
+        return source;
+    }
+
     function appendCss(source) {
         var css = document.createElement("style");
         css.type = "text/css";
@@ -69,25 +78,33 @@
 
     function evalSource(source, url) {
         if (endsWith(url, ".js" + CACHE_SUBFIX)) {
-            eval(source);
-            console.log("eval js source "+ url);
+            console.log("eval js source start " + url);
+            var start = Date.now();
+            if (typeof source === "function") {
+                source();
+            } else {
+//                new Function(source)();
+                eval(source);
+            }
+            console.log("eval js source end " + url + "||" + (Date.now() - start));
             return true;
         } else if (endsWith(url, ".css" + CACHE_SUBFIX)) {
             appendCss(source);
-            console.log("append css source "+ url);
+            console.log("append css source " + url);
             return true;
         }
     }
 
     var timeOut;
-    function updateConfig(){
-        if(timeOut){
+
+    function updateConfig() {
+        if (timeOut) {
             clearTimeout(timeOut);
         }
-        timeOut = setTimeout(function(){
-            console.log("update cache config:" ,config);
-            localStorage.setItem("cacheConfig",JSON.stringify(config));
-        },1000);
+        timeOut = setTimeout(function () {
+            console.log("update cache config:", config);
+            localStorage.setItem("cacheConfig", JSON.stringify(config));
+        }, 1000);
     }
 
 })(window['lib'] || (window['lib'] = {}));

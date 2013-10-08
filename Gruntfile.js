@@ -62,23 +62,14 @@ module.exports = function (grunt) {
         },
 
         source_wrap: {
-            main:{
-                files: [{
-                    expand: true,
-                    cwd: '<%= distPath%>',
-                    src: ['**/*.js','!**/*__cached.js'],
-                    dest: '<%= distPath %>',
-                    ext: '__cached.js'
-                }]
-            },
-
             test:{
                 files: [{
                     expand: true,
-                    cwd: 'test/1.0',
-                    src: ['**/*.js','!**/*__cached.js','**/*.css','!**/*__cached.css'],
-                    dest: 'test/1.0',
-                    ext: '.cah.js'
+                    cwd: 'test',
+                    src: ['**/*.js','!**/*.cah.js','**/*.css'],
+                    dest: 'test',
+                    ext: '.cah.js',
+                    funcName : 'window.lib.awp.cache'
                 }]
             }
         }

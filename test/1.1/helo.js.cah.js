@@ -1,4 +1,4 @@
-;(function(){window.lib.awp.cache({
-    source : "console.log(\"hello world\");;",
-    name : "helo.js.cah.js"
+;(function(){ window.lib.awp.cache("helo.js.cah.js",function(){
+    console.log("hello world");
+
 })})();
