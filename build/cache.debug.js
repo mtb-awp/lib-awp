@@ -12,7 +12,7 @@
 
     function fileName(url) {
         var arr = url.split("/");
-        return arr[arr.length - 1];
+        return arr[arr.length - 1].split("?")[0];
     }
 
     function appendCss(source) {
@@ -25,7 +25,7 @@
     function evalSource(source, url) {
         if (endsWith(url, ".js")) {
             eval(source);
-            console.log("eval js:" + source);
+//            console.log("eval js:" + source);
             return true;
         } else if (endsWith(url, ".css")) {
             appendCss(source);
@@ -36,6 +36,10 @@
 
     lib.awp = {
         read: function (url) {
+            console.log(url);
+            if(!endsWith(url, "__cached.js") && !endsWith(url, "__cached.css")){
+                return false;
+            }
             var source = localStorage.getItem(url);
             try {
                 if (source) {

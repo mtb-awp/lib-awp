@@ -76,8 +76,9 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'test/1.0',
-                    src: ['**/*.js','!**/*__cached.js'],
-                    ext: '__cached.js'
+                    src: ['**/*.js','!**/*__cached.js','**/*.css','!**/*__cached.css'],
+                    dest: 'test/1.0',
+                    ext: '.cah.js'
                 }]
             }
         }
@@ -91,6 +92,6 @@ module.exports = function (grunt) {
 
     // Default grunt
     grunt.registerTask('default', ['copy', 'cssmin', 'uglify','source_wrap:main']);
-    grunt.registerTask('test', ['copy', 'cssmin', 'uglify','source_wrap:test']);
+    grunt.registerTask('test', ['source_wrap:test']);
 
 };

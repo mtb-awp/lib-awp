@@ -26,6 +26,11 @@
             result.push(url);
         }
         urls.forEach(function (url) {
+            //TODO
+            if(!result[0] && window.lib.awp.read(url)){
+                console.log("not need combo:" + url);
+                return;
+            }
             //是相对地址
             if (url.indexOf("./") === 0 || url.indexOf("/../") == 0) {
                 var location = window.location.pathname;

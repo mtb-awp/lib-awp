@@ -10,7 +10,7 @@
     }
 
     app.config.resourceCombo = function (urls) {
-        var comboArr = [], result = [];
+        var comboArr = [], result = [],cacheLength = 0;
         function updateComboArr(){
             if(comboArr.length){
 				if(comboArr.length===1){
@@ -27,9 +27,13 @@
         }
         urls.forEach(function (url) {
             //TODO
-            if(!result[0] && window.lib.awp.read(url)){
-                console.log("not need combo:" + url);
-                return;
+            if(result.length == cacheLength){
+                var cacheResult = window.lib.awp.read(url);
+                if(cacheResult == 0){
+                    cacheLength++;
+                }else if(cacheResult == 1){
+                    return;
+                }
             }
             //是相对地址
             if (url.indexOf("./") === 0 || url.indexOf("/../") == 0) {
